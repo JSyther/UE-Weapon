@@ -17,19 +17,31 @@ public:
 
     /** Get Melee attack radius */
     UFUNCTION(BlueprintCallable, Category = "Melee")
-    float GetAttackRadius() const { return AttackRadius; }
+    float GetAttackRadius() const;
 
     /** Set Melee attack radius */
     UFUNCTION(BlueprintCallable, Category = "Melee")
-    void SetAttackRadius(float Radius) { AttackRadius = Radius; }
+    void SetAttackRadius(float Radius);
 
     /** Get attack cooldown */
     UFUNCTION(BlueprintCallable, Category = "Melee")
-    float GetAttackCooldown() const { return AttackCooldown; }
+    float GetAttackCooldown() const;
 
     /** Set attack cooldown */
     UFUNCTION(BlueprintCallable, Category = "Melee")
-    void SetAttackCooldown(float Cooldown) { AttackCooldown = Cooldown; }
+    void SetAttackCooldown(float Cooldown);
+
+    /** Check if weapon can attack based on cooldown */
+    UFUNCTION(BlueprintCallable, Category = "Melee")
+    bool CanAttack() const;
+
+    /** Perform melee attack logic */
+    UFUNCTION(BlueprintCallable, Category = "Melee")
+    void PerformMeleeAttack();
+
+    /** Get base damage amount */
+    UFUNCTION(BlueprintCallable, Category = "Melee")
+    float GetBaseDamage() const;
 
 protected:
     /** Radius of melee attack (can be used for hit detection sphere) */
@@ -39,4 +51,8 @@ protected:
     /** Time in seconds between attacks */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Melee")
     float AttackCooldown;
+
+private:
+    /** Timestamp of last performed attack */
+    float LastAttackTime;
 };
