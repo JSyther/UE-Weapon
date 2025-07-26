@@ -4,8 +4,13 @@
 #include "GameFramework/Actor.h"
 #include "WeaponModule.generated.h"
 
+// Forward declarations
+class USkeletalMeshComponent;
+class UShapeComponent;
+class UWeaponComponent;
+
 /**
- * Base weapon actor class with mesh and collision components.
+ * Base weapon actor class with mesh, collision, and weapon logic component.
  */
 UCLASS(Abstract)
 class YOURGAME_API AWeaponModule : public AActor
@@ -32,6 +37,10 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Weapon")
     void SetWeaponCollision(UShapeComponent* NewCollision) { WeaponCollision = NewCollision; }
 
+    /** Get the internal weapon logic component */
+    UFUNCTION(BlueprintCallable, Category = "Weapon")
+    UWeaponComponent* GetWeaponComponent() const { return WeaponComponent; }
+
 protected:
     /** Skeletal mesh component representing the weapon */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
@@ -40,4 +49,8 @@ protected:
     /** Collision component for weapon interactions */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
     UShapeComponent* WeaponCollision;
+
+    /** Weapon logic and state component */
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+    UWeaponComponent* WeaponComponent;
 };
