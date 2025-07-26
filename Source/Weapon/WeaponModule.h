@@ -2,6 +2,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/BoxComponent.h"
+#include "Component/WeaponComponent.h"
 #include "WeaponModule.generated.h"
 
 // Forward declarations
