@@ -1,7 +1,4 @@
 #include "WeaponModule.h"
-#include "Components/SkeletalMeshComponent.h"
-#include "Components/BoxComponent.h"
-#include "Component/WeaponComponent.h"
 
 AWeaponModule::AWeaponModule()
 {
